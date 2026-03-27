@@ -13,6 +13,24 @@ public:
 	void pitchWheelMoved(int newPitchWheelValue) override;
 	void controllerMoved(int controllerNumber, int newControllerValue) override;
 
+	void prepare(double sampleRate, int samplesPerBlock, int outputChannels);
 	void renderNextBlock(juce::AudioBuffer< float >& outputBuffer, int startSample, int numSamples) override;
+
 private:
+	juce::dsp::Oscillator<float> osc
+	{
+		// lambda that defines the function for calculating the waveform
+		[](float x)
+		{
+			return std::sin(x);
+			//return x / juce::MathConstants<float>::pi;
+			//return x < 0.0f ? -1.0f : 1.0f;
+		},
+		200 // lookup table size
+	};
+
+	juce::dsp::Gain<float> gain;
+
+	juce::ADSR adsr;
+	juce::ADSR::Parameters adsr_params;
 };

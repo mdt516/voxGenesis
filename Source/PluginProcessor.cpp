@@ -89,6 +89,14 @@ void VoxGenesisAudioProcessor::changeProgramName (int index, const juce::String&
 void VoxGenesisAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     synth.setCurrentPlaybackSampleRate(sampleRate);
+
+    for (int i = 0; i < synth.getNumVoices(); i++)
+    {
+        if (auto voice = dynamic_cast<SynthVoice*>(synth.getVoice(i))) // checks if SynthesizerVoice* is cast to my SynthVoice pointer
+        {
+            voice->prepare(sampleRate, samplesPerBlock, getTotalNumOutputChannels());
+        }
+    }
 }
 
 void VoxGenesisAudioProcessor::releaseResources()
