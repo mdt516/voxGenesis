@@ -12,7 +12,7 @@ VoxGenesisAudioProcessor::VoxGenesisAudioProcessor()
                       #endif
                        .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
                      #endif
-                       )
+                       ), apvts(*this, nullptr, "Parameters", createParams())
 #endif
 {
     synth.addSound(new SynthSound());
@@ -174,6 +174,22 @@ void VoxGenesisAudioProcessor::setStateInformation (const void* data, int sizeIn
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
+}
+
+juce::AudioProcessorValueTreeState::ParameterLayout VoxGenesisAudioProcessor::createParams()
+{
+    std::vector< std::unique_ptr<juce::RangedAudioParameter> > params;
+
+    // oscillator params
+    params.push_back(std::make_unique<juce::AudioParameterChoice>("_osc-select", "Oscillator", juce::StringArray{"Sine", "Saw", "Square"}, 0));
+
+    // ADSR params
+    params.push_back(std::make_unique<juce::AudioParameterFloat>("_attack", "Attack", juce::NormalisableRange<float>(0.1f, 1.0f), 0.1f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>("_decay", "Decay", juce::NormalisableRange<float>(0.1f, 1.0f), 0.1f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>("_sustain", "Sustain", juce::NormalisableRange<float>(0.1f, 1.0f), 1.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>("_release", "Release", juce::NormalisableRange<float>(0.1f, 3.0f), 0.4f));
+    
+    return { params.begin(), params.end() };
 }
 
 
