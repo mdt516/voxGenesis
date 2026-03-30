@@ -22,12 +22,14 @@ private:
 		// lambda that defines the function for calculating the waveform
 		[](float x)
 		{
-			return std::sin(x);
-			//return x / juce::MathConstants<float>::pi;
+			//return std::sin(x);
+			return x / juce::MathConstants<float>::pi;
 			//return x < 0.0f ? -1.0f : 1.0f;
 		},
 		200 // lookup table size
 	};
+
+	juce::AudioBuffer<float> synthBuffer;
 
 	juce::dsp::Gain<float> gain;
 
