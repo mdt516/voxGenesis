@@ -9,6 +9,7 @@ bool SynthVoice::canPlaySound(juce::SynthesiserSound* sound)
 void SynthVoice::startNote(int midiNoteNumber, float velocity, juce::SynthesiserSound* sound, int currentPitchWheelPosition)
 {
 	osc.setFrequency(juce::MidiMessage::getMidiNoteInHertz(midiNoteNumber));
+	osc.reset();    // reset phase
 
 	adsr.noteOn();
 }
@@ -44,7 +45,7 @@ void SynthVoice::prepare(double sampleRate, int samplesPerBlock, int outputChann
 	osc.prepare(spec);
 	gain.prepare(spec);
 
-	gain.setGainLinear(0.02f);
+	gain.setGainLinear(0.08f);
 
 
 	// hard-coded adsr values, subject to change
@@ -64,7 +65,7 @@ void SynthVoice::renderNextBlock(juce::AudioBuffer<float>& outputBuffer, int sta
 	}
 
 	// set synthBuffer size to outputBuffer size and clear it
-	synthBuffer.setSize(outputBuffer.getNumChannels(), outputBuffer.getNumSamples(), false, false, true);
+	synthBuffer.setSize(outputBuffer.getNumChannels(), numSamples, false, false, true);
 	synthBuffer.clear();
 
 	juce::dsp::AudioBlock<float> audioBlock(synthBuffer);
@@ -72,7 +73,7 @@ void SynthVoice::renderNextBlock(juce::AudioBuffer<float>& outputBuffer, int sta
 	// add osc gain, and adsr processing to synthBuffer
 	osc.process(juce::dsp::ProcessContextReplacing<float>(audioBlock));
 	gain.process(juce::dsp::ProcessContextReplacing<float>(audioBlock));
-	adsr.applyEnvelopeToBuffer(synthBuffer, startSample, numSamples);
+	adsr.applyEnvelopeToBuffer(synthBuffer, 0, numSamples);
 
 
 	// add info from synthBuffer into outputbuffer to wrap everything up in a neat bow
@@ -85,4 +86,6 @@ void SynthVoice::renderNextBlock(juce::AudioBuffer<float>& outputBuffer, int sta
 			clearCurrentNote();
 		}
 	}
+
+	jcf::BufferDebugger::capture("output", outputBuffer.getReadPointer(0), outputBuffer.getNumSamples(), -0.4, 0.4);
 }

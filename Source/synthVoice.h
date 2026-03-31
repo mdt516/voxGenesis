@@ -22,8 +22,13 @@ private:
 		// lambda that defines the function for calculating the waveform
 		[](float x)
 		{
+			// sine
 			//return std::sin(x);
+
+			// saw
 			return x / juce::MathConstants<float>::pi;
+
+			// square
 			//return x < 0.0f ? -1.0f : 1.0f;
 		},
 		200 // lookup table size

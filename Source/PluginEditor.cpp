@@ -13,7 +13,7 @@ VoxGenesisAudioProcessorEditor::VoxGenesisAudioProcessorEditor (VoxGenesisAudioP
     sustainSliderAttatchment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(p.getState(), "_sustain", sustainSlider);
     releaseSliderAttatchment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(p.getState(), "_release", releaseSlider);
 
-    oscSelectorAttatchment = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(p.getState(), "_osc-selector", osc_selector);
+    oscSelectorAttatchment = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(p.getState(), "_osc-select", osc_selector);
 }
 
 VoxGenesisAudioProcessorEditor::~VoxGenesisAudioProcessorEditor()

@@ -17,6 +17,7 @@ public:
 
 private:
     VoxGenesisAudioProcessor& audioProcessor;
+    jcf::BufferDebugger buffdebug;
 
     juce::ComboBox osc_selector;
     std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment> oscSelectorAttatchment;
