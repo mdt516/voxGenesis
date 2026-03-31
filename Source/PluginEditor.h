@@ -3,6 +3,7 @@
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
+#include <melatonin_inspector/melatonin_inspector.h>
 
 
 class VoxGenesisAudioProcessorEditor  : public juce::AudioProcessorEditor
@@ -18,8 +19,9 @@ public:
 private:
     VoxGenesisAudioProcessor& audioProcessor;
     jcf::BufferDebugger buffdebug;
+    melatonin::Inspector inspect{*this};
 
-    juce::ComboBox osc_selector;
+    juce::ComboBox oscSelector;
     std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment> oscSelectorAttatchment;
 
     juce::Slider attackSlider;
@@ -31,6 +33,8 @@ private:
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> decaySliderAttatchment;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> sustainSliderAttatchment;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> releaseSliderAttatchment;
+
+    void styleSlider(juce::Slider& slider);
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (VoxGenesisAudioProcessorEditor)
 };

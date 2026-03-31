@@ -46,15 +46,6 @@ void SynthVoice::prepare(double sampleRate, int samplesPerBlock, int outputChann
 	gain.prepare(spec);
 
 	gain.setGainLinear(0.08f);
-
-
-	// hard-coded adsr values, subject to change
-	adsr_params.attack = 0.8f;
-	adsr_params.decay = 0.8f;
-	adsr_params.sustain = 1.0f;
-	adsr_params.release = 1.5f;
-
-	adsr.setParameters(adsr_params);
 }
 
 void SynthVoice::renderNextBlock(juce::AudioBuffer<float>& outputBuffer, int startSample, int numSamples)
@@ -88,4 +79,14 @@ void SynthVoice::renderNextBlock(juce::AudioBuffer<float>& outputBuffer, int sta
 	}
 
 	jcf::BufferDebugger::capture("output", outputBuffer.getReadPointer(0), outputBuffer.getNumSamples(), -0.4, 0.4);
+}
+
+void SynthVoice::updateADSR(const float a, const float d, const float s, const float r)
+{
+	adsr_params.attack = a;
+	adsr_params.decay = d;
+	adsr_params.sustain = s;
+	adsr_params.release = r;
+
+	adsr.setParameters(adsr_params);
 }

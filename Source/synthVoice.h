@@ -16,6 +16,8 @@ public:
 	void prepare(double sampleRate, int samplesPerBlock, int outputChannels);
 	void renderNextBlock(juce::AudioBuffer< float >& outputBuffer, int startSample, int numSamples) override;
 
+	void updateADSR(const float a, const float d, const float s, const float r);
+
 private:
 	juce::dsp::Oscillator<float> osc
 	{
