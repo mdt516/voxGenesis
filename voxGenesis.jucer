@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="RS3ekB" name="voxGenesis" projectType="audioplug" useAppConfig="0"
-              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn">
+<JUCERPROJECT id="RS3ekB" name="voxGenesis" projectType="audioplug" addUsingNamespaceToJuceHeader="0"
+              jucerFormatVersion="1" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn">
   <MAINGROUP id="oYLIZx" name="voxGenesis">
     <GROUP id="{6C3B17CB-C16E-B6FF-02BF-CBDB178D8595}" name="Source">
       <FILE id="GfUObA" name="PluginProcessor.cpp" compile="1" resource="0"
@@ -17,6 +17,7 @@
     </GROUP>
   </MAINGROUP>
   <MODULES>
+    <MODULE id="jcf_debug" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
@@ -56,6 +57,7 @@
         <MODULEPATH id="juce_gui_basics" path="../../../../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../../../../JUCE/modules"/>
         <MODULEPATH id="juce_dsp" path="../../../../../JUCE/modules"/>
+        <MODULEPATH id="jcf_debug" path="../../../../../JUCE/user-modules"/>
       </MODULEPATHS>
     </VS2026>
   </EXPORTFORMATS>
