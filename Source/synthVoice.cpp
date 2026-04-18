@@ -77,16 +77,9 @@ void SynthVoice::renderNextBlock(juce::AudioBuffer<float>& outputBuffer, int sta
 			clearCurrentNote();
 		}
 	}
-
-	jcf::BufferDebugger::capture("output", outputBuffer.getReadPointer(0), outputBuffer.getNumSamples(), -0.4, 0.4);
 }
 
 void SynthVoice::updateADSR(const float a, const float d, const float s, const float r)
 {
-	adsr_params.attack = a;
-	adsr_params.decay = d;
-	adsr_params.sustain = s;
-	adsr_params.release = r;
-
-	adsr.setParameters(adsr_params);
+	adsr.updateADSR(a, d, s, r);
 }

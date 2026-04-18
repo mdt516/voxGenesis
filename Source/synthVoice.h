@@ -1,8 +1,10 @@
 
 #pragma once
 
-#include "synthSound.h"
 #include <JuceHeader.h>
+
+#include "synthSound.h"
+#include "Data/adsrData.h"
 
 class SynthVoice : public juce::SynthesiserVoice
 {
@@ -37,9 +39,7 @@ private:
 	};
 
 	juce::AudioBuffer<float> synthBuffer;
-
 	juce::dsp::Gain<float> gain;
 
-	juce::ADSR adsr;
-	juce::ADSR::Parameters adsr_params;
+	adsrData adsr;
 };
