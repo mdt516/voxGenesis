@@ -2,8 +2,8 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "synthSound.h"
-#include "synthVoice.h"
+#include "Synth/synthSound.h"
+#include "Synth/synthVoice.h"
 
 
 class VoxGenesisAudioProcessor  : public juce::AudioProcessor

@@ -4,7 +4,8 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 
-#include "UI/adsr-ui.h"
+#include "UI/adsrUI.h"
+#include "UI/oscillatorUI.h"
 
 
 class VoxGenesisAudioProcessorEditor  : public juce::AudioProcessorEditor
@@ -20,10 +21,11 @@ public:
 private:
     VoxGenesisAudioProcessor& audioProcessor;
 
-    juce::ComboBox oscSelector;
-    std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment> oscSelectorAttatchment;
+    juce::ComboBox waveType1Selector;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment> waveType1SelectorAttatchment;
 
-    adsr_ui adsr;
+    adsrUI adsr;
+    oscillatorUI osc;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (VoxGenesisAudioProcessorEditor)
 };

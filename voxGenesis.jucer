@@ -4,13 +4,25 @@
               jucerFormatVersion="1" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn">
   <MAINGROUP id="oYLIZx" name="voxGenesis">
     <GROUP id="{6C3B17CB-C16E-B6FF-02BF-CBDB178D8595}" name="Source">
+      <GROUP id="{C734F86A-E7EF-88DB-277C-5FEBA3092C22}" name="Synth">
+        <FILE id="is5E7W" name="synthSound.h" compile="0" resource="0" file="Source/Synth/synthSound.h"/>
+        <FILE id="tGHWVp" name="synthVoice.cpp" compile="1" resource="0" file="Source/Synth/synthVoice.cpp"/>
+        <FILE id="YGLLAa" name="synthVoice.h" compile="0" resource="0" file="Source/Synth/synthVoice.h"/>
+      </GROUP>
       <GROUP id="{BEFC1B34-74D0-B248-54D2-184D040B4C25}" name="Data">
         <FILE id="MgYsD8" name="adsrData.cpp" compile="1" resource="0" file="Source/Data/adsrData.cpp"/>
         <FILE id="G7UP2a" name="adsrData.h" compile="0" resource="0" file="Source/Data/adsrData.h"/>
+        <FILE id="Fkw1XW" name="oscillatorData.cpp" compile="1" resource="0"
+              file="Source/Data/oscillatorData.cpp"/>
+        <FILE id="AVKia8" name="oscillatorData.h" compile="0" resource="0"
+              file="Source/Data/oscillatorData.h"/>
       </GROUP>
       <GROUP id="{756BDE84-31EE-3277-DA3F-BDD351699509}" name="UI">
-        <FILE id="jqpyNU" name="adsr-ui.cpp" compile="1" resource="0" file="Source/UI/adsr-ui.cpp"/>
-        <FILE id="R5Cc5i" name="adsr-ui.h" compile="0" resource="0" file="Source/UI/adsr-ui.h"/>
+        <FILE id="jqpyNU" name="adsrUI.cpp" compile="1" resource="0" file="Source/UI/adsrUI.cpp"/>
+        <FILE id="R5Cc5i" name="adsrUI.h" compile="0" resource="0" file="Source/UI/adsrUI.h"/>
+        <FILE id="zYrbTL" name="oscillatorUI.cpp" compile="1" resource="0"
+              file="Source/UI/oscillatorUI.cpp"/>
+        <FILE id="sFrK5j" name="oscillatorUI.h" compile="0" resource="0" file="Source/UI/oscillatorUI.h"/>
       </GROUP>
       <FILE id="GfUObA" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
@@ -19,9 +31,6 @@
       <FILE id="ISGDsZ" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
       <FILE id="P3aLHN" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
-      <FILE id="SYY8Nl" name="synthSound.h" compile="0" resource="0" file="Source/synthSound.h"/>
-      <FILE id="c3CxvD" name="synthVoice.h" compile="0" resource="0" file="Source/synthVoice.h"/>
-      <FILE id="OOzQsP" name="synthVoice.cpp" compile="1" resource="0" file="Source/synthVoice.cpp"/>
     </GROUP>
   </MAINGROUP>
   <MODULES>

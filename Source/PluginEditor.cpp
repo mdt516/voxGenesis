@@ -4,13 +4,12 @@
 
 
 VoxGenesisAudioProcessorEditor::VoxGenesisAudioProcessorEditor (VoxGenesisAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p), adsr(p.getState())
+    : AudioProcessorEditor (&p), audioProcessor (p), adsr(p.getState()), osc(p.getState(), "_osc1-wave-type")
 {
     setSize (400, 300);
 
     addAndMakeVisible(adsr);
-
-    oscSelectorAttatchment = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(p.getState(), "_osc-select", oscSelector);
+    addAndMakeVisible(osc);
 }
 
 VoxGenesisAudioProcessorEditor::~VoxGenesisAudioProcessorEditor()
@@ -25,5 +24,6 @@ void VoxGenesisAudioProcessorEditor::paint (juce::Graphics& g)
 
 void VoxGenesisAudioProcessorEditor::resized()
 {
+    osc.setBounds(10, 10, 100, 30);
     adsr.setBounds(getWidth() / 2, 0, getWidth() / 2, getHeight());
 }

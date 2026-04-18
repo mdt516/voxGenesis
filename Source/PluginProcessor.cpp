@@ -141,14 +141,17 @@ void VoxGenesisAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, ju
 	{
 		if (auto voice = dynamic_cast<SynthVoice*>(synth.getVoice(i)))    // checks to make sure that this is indeed a SynthVoice, not a juce::SynthesiserVoice
 		{
-			// get ADSR current vals form APVTS and load from their atomic pointer
+			// get current vals form APVTS and load from their atomic pointers
 			auto attack = apvts.getRawParameterValue("_attack")->load();
 			auto decay = apvts.getRawParameterValue("_decay")->load();
 			auto sustain = apvts.getRawParameterValue("_sustain")->load();
 			auto release = apvts.getRawParameterValue("_release")->load();
 
+			auto oscWave = apvts.getRawParameterValue("_osc1-wave-type")->load();
+
 			// update them for the current voice
 			voice->updateADSR(attack, decay, sustain, release);
+			voice->getOscillator().setWaveType(oscWave);
 		}
 	}
 
@@ -185,7 +188,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout VoxGenesisAudioProcessor::cr
 	return
 	{
 		// osc selector
-		std::make_unique<juce::AudioParameterChoice>("_osc-select", "Oscillator", juce::StringArray{"Sine", "Saw", "Square"}, 0),
+		std::make_unique<juce::AudioParameterChoice>("_osc1-wave-type", "Oscillator", juce::StringArray{"Sine", "Saw", "Square"}, 0),
 
 		// ADSR parameters
 		std::make_unique<juce::AudioParameterFloat>("_attack", "Attack", juce::NormalisableRange<float>(0.1f, 1.0f), 0.1f),
