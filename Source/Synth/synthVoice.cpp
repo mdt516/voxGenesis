@@ -17,11 +17,6 @@ void SynthVoice::startNote(int midiNoteNumber, float velocity, juce::Synthesiser
 void SynthVoice::stopNote(float velocity, bool allowTailOff)
 {
 	adsr.noteOff();
-
-	if (!adsr.isActive())
-	{
-		clearCurrentNote();
-	}
 }
 
 void SynthVoice::pitchWheelMoved(int newPitchWheelValue)
@@ -37,6 +32,10 @@ void SynthVoice::prepare(double sampleRate, int samplesPerBlock, int outputChann
 	spec.maximumBlockSize = samplesPerBlock;
 	spec.sampleRate = sampleRate;
 	spec.numChannels = outputChannels;
+
+	// set synthBuffer size to outputBuffer size and clear it
+	synthBuffer.setSize(outputChannels, samplesPerBlock, false, false, true);
+	synthBuffer.clear();
 
 	// set up adsr env
 	adsr.setSampleRate(sampleRate);
@@ -55,10 +54,6 @@ void SynthVoice::renderNextBlock(juce::AudioBuffer<float>& outputBuffer, int sta
 		return;
 	}
 
-	// set synthBuffer size to outputBuffer size and clear it
-	synthBuffer.setSize(outputBuffer.getNumChannels(), numSamples, false, false, true);
-	synthBuffer.clear();
-
 	juce::dsp::AudioBlock<float> audioBlock(synthBuffer);
 
 	// add osc gain, and adsr processing to synthBuffer
@@ -71,11 +66,12 @@ void SynthVoice::renderNextBlock(juce::AudioBuffer<float>& outputBuffer, int sta
 	for (int i = 0; i < outputBuffer.getNumChannels(); i++)
 	{
 		outputBuffer.addFrom(i, startSample, synthBuffer, i, 0, numSamples);
+	}
 
-		if (!adsr.isActive())
-		{
-			clearCurrentNote();
-		}
+	// sets note status to off when amp evelope is done
+	if (!adsr.isActive())
+	{
+		clearCurrentNote();
 	}
 }
 

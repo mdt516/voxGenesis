@@ -1,8 +1,8 @@
 
 
-#include "oscillatorData.h"
+#include "customOscillator.h"
 
-void oscillatorData::setWaveType(const int choice)
+void customOscillator::setWaveType(const int choice)
 {
 	switch (choice)
 	{
@@ -29,17 +29,18 @@ void oscillatorData::setWaveType(const int choice)
 	}
 }
 
-void oscillatorData::prepareToPlay(juce::dsp::ProcessSpec& spec)
+void customOscillator::prepareToPlay(juce::dsp::ProcessSpec& spec)
 {
 	prepare(spec);
 }
 
-void oscillatorData::renderNextBlock(juce::dsp::AudioBlock<float>& block)
+void customOscillator::renderNextBlock(juce::dsp::AudioBlock<float>& block)
 {
-	process(block);
+	auto context = juce::dsp::ProcessContextReplacing<float>(block);
+	process(context);
 }
 
-void oscillatorData::setWaveFrequency(const int midiNoteNumber)
+void customOscillator::setWaveFrequency(const int midiNoteNumber)
 {
 	setFrequency(juce::MidiMessage::getMidiNoteInHertz(midiNoteNumber));
 }

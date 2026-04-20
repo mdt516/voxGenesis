@@ -2,7 +2,7 @@
 #pragma once
 #include <JuceHeader.h>
 
-class adsrData : public juce::ADSR
+class customADSR : public juce::ADSR
 {
 public:
     void updateADSR(const float a, const float d, const float s, const float r);

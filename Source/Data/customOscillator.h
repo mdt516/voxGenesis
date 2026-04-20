@@ -2,7 +2,7 @@
 #pragma once
 #include <JuceHeader.h>
 
-class oscillatorData : public juce::dsp::Oscillator<float>
+class customOscillator : public juce::dsp::Oscillator<float>
 {
 public:
     void setWaveType(const int choice);
@@ -11,5 +11,4 @@ public:
     void setWaveFrequency(const int midiNoteNumber);
 
 private:
-
 };

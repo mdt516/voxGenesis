@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="RS3ekB" name="voxGenesis" projectType="audioplug" addUsingNamespaceToJuceHeader="0"
-              jucerFormatVersion="1" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn">
+              jucerFormatVersion="1" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
+              compilerFlagSchemes="">
   <MAINGROUP id="oYLIZx" name="voxGenesis">
     <GROUP id="{6C3B17CB-C16E-B6FF-02BF-CBDB178D8595}" name="Source">
       <GROUP id="{C734F86A-E7EF-88DB-277C-5FEBA3092C22}" name="Synth">
         <FILE id="is5E7W" name="synthSound.h" compile="0" resource="0" file="Source/Synth/synthSound.h"/>
-        <FILE id="tGHWVp" name="synthVoice.cpp" compile="1" resource="0" file="Source/Synth/synthVoice.cpp"/>
+        <FILE id="tGHWVp" name="synthVoice.cpp" compile="1" resource="0" file="Source/Synth/synthVoice.cpp"
+              compilerFlagScheme=""/>
         <FILE id="YGLLAa" name="synthVoice.h" compile="0" resource="0" file="Source/Synth/synthVoice.h"/>
       </GROUP>
       <GROUP id="{BEFC1B34-74D0-B248-54D2-184D040B4C25}" name="Data">
@@ -34,6 +36,7 @@
     </GROUP>
   </MAINGROUP>
   <MODULES>
+    <MODULE id="jcf_debug" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
@@ -73,6 +76,7 @@
         <MODULEPATH id="juce_gui_basics" path="../../../../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../../../../JUCE/modules"/>
         <MODULEPATH id="juce_dsp" path="../../../../../JUCE/modules"/>
+        <MODULEPATH id="jcf_debug" path="../../../../../JUCE/user-modules"/>
       </MODULEPATHS>
     </VS2026>
   </EXPORTFORMATS>

@@ -1,8 +1,8 @@
 
 
-#include "adsrData.h"
+#include "customADSR.h"
 
-void adsrData::updateADSR(const float a, const float d, const float s, const float r)
+void customADSR::updateADSR(const float a, const float d, const float s, const float r)
 {
 	adsr_params.attack = a;
 	adsr_params.decay = d;

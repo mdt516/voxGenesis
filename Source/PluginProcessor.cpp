@@ -154,8 +154,9 @@ void VoxGenesisAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, ju
 			voice->getOscillator().setWaveType(oscWave);
 		}
 	}
-
 	synth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
+
+	buffdebug.capture("output", buffer.getReadPointer(0), buffer.getNumSamples(), -0.1, 0.1);
 }
 
 

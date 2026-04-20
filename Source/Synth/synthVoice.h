@@ -4,8 +4,8 @@
 #include <JuceHeader.h>
 
 #include "synthSound.h"
-#include "../Data/adsrData.h"
-#include "../Data/oscillatorData.h"
+#include "../Data/customADSR.h"
+#include "../Data/customOscillator.h"
 
 class SynthVoice : public juce::SynthesiserVoice
 {
@@ -21,12 +21,12 @@ public:
 
 	void updateADSR(const float a, const float d, const float s, const float r);
 
-	oscillatorData& getOscillator() { return osc; }
+	customOscillator& getOscillator() { return osc; }
 private:
-	oscillatorData osc;
+	customOscillator osc;
 
 	juce::AudioBuffer<float> synthBuffer;
 	juce::dsp::Gain<float> gain;
 
-	adsrData adsr;
+	customADSR adsr;
 };
