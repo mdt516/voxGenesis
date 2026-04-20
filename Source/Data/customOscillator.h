@@ -11,4 +11,5 @@ public:
     void setWaveFrequency(const int midiNoteNumber);
 
 private:
+    juce::SmoothedValue<float, juce::ValueSmoothingTypes::Multiplicative> freq = 440.0f;
 };

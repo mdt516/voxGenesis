@@ -32,6 +32,7 @@ void customOscillator::setWaveType(const int choice)
 void customOscillator::prepareToPlay(juce::dsp::ProcessSpec& spec)
 {
 	prepare(spec);
+	freq.reset(spec.sampleRate, 0.05);
 }
 
 void customOscillator::renderNextBlock(juce::dsp::AudioBlock<float>& block)
@@ -42,5 +43,6 @@ void customOscillator::renderNextBlock(juce::dsp::AudioBlock<float>& block)
 
 void customOscillator::setWaveFrequency(const int midiNoteNumber)
 {
-	setFrequency(juce::MidiMessage::getMidiNoteInHertz(midiNoteNumber));
+	freq.setTargetValue(juce::MidiMessage::getMidiNoteInHertz(midiNoteNumber));
+	setFrequency(freq.getNextValue());
 }
