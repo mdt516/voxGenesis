@@ -39,8 +39,8 @@ void customOscillator::prepareToPlay(juce::dsp::ProcessSpec& spec)
 void customOscillator::renderNextBlock(juce::dsp::AudioBlock<float>& block)
 {
 	auto context = juce::dsp::ProcessContextReplacing<float>(block);
-	process(context);
-}
+		process(context);
+	}
 
 void customOscillator::setWaveFrequency(const int midiNoteNumber)
 {
