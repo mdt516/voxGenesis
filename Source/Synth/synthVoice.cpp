@@ -33,10 +33,6 @@ void SynthVoice::prepare(double sampleRate, int samplesPerBlock, int outputChann
 	spec.sampleRate = sampleRate;
 	spec.numChannels = outputChannels;
 
-	// set synthBuffer size to outputBuffer size and clear it
-	synthBuffer.setSize(outputChannels, samplesPerBlock, false, false, true);
-	synthBuffer.clear();
-
 	// set up adsr env
 	adsr.setSampleRate(sampleRate);
 
@@ -53,6 +49,10 @@ void SynthVoice::renderNextBlock(juce::AudioBuffer<float>& outputBuffer, int sta
 	{
 		return;
 	}
+
+	// set synthBuffer size to outputBuffer size and clear it
+	synthBuffer.setSize(outputBuffer.getNumChannels(), numSamples, false, false, true);
+	synthBuffer.clear();
 
 	juce::dsp::AudioBlock<float> audioBlock(synthBuffer);
 
