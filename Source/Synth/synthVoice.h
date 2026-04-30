@@ -4,8 +4,8 @@
 #include <JuceHeader.h>
 
 #include "synthSound.h"
-#include "../Data/customADSR.h"
-#include "../Data/customOscillator.h"
+#include "../DSP/customADSR.h"
+#include "../DSP/customOscillator.h"
 
 class SynthVoice : public juce::SynthesiserVoice
 {

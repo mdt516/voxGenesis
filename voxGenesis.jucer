@@ -11,13 +11,13 @@
               compilerFlagScheme=""/>
         <FILE id="YGLLAa" name="synthVoice.h" compile="0" resource="0" file="Source/Synth/synthVoice.h"/>
       </GROUP>
-      <GROUP id="{BEFC1B34-74D0-B248-54D2-184D040B4C25}" name="Data">
-        <FILE id="MgYsD8" name="adsrData.cpp" compile="1" resource="0" file="Source/Data/adsrData.cpp"/>
-        <FILE id="G7UP2a" name="adsrData.h" compile="0" resource="0" file="Source/Data/adsrData.h"/>
-        <FILE id="Fkw1XW" name="oscillatorData.cpp" compile="1" resource="0"
-              file="Source/Data/oscillatorData.cpp"/>
-        <FILE id="AVKia8" name="oscillatorData.h" compile="0" resource="0"
-              file="Source/Data/oscillatorData.h"/>
+      <GROUP id="{BEFC1B34-74D0-B248-54D2-184D040B4C25}" name="DSP">
+        <FILE id="WTaSMT" name="customADSR.cpp" compile="1" resource="0" file="Source/DSP/customADSR.cpp"/>
+        <FILE id="kkk7Bo" name="customADSR.h" compile="0" resource="0" file="Source/DSP/customADSR.h"/>
+        <FILE id="ekyaXD" name="customOscillator.cpp" compile="1" resource="0"
+              file="Source/DSP/customOscillator.cpp"/>
+        <FILE id="aNP3WB" name="customOscillator.h" compile="0" resource="0"
+              file="Source/DSP/customOscillator.h"/>
       </GROUP>
       <GROUP id="{756BDE84-31EE-3277-DA3F-BDD351699509}" name="UI">
         <FILE id="jqpyNU" name="adsrUI.cpp" compile="1" resource="0" file="Source/UI/adsrUI.cpp"/>
