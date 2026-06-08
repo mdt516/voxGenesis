@@ -155,8 +155,6 @@ void VoxGenesisAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, ju
 		}
 	}
 	synth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
-
-	buffdebug.capture("output", buffer.getReadPointer(0), buffer.getNumSamples(), -0.1, 0.1);
 }
 
 

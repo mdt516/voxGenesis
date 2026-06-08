@@ -46,7 +46,6 @@ public:
 
 private:
     juce::Synthesiser synth;
-    jcf::BufferDebugger buffdebug;
 
     juce::AudioProcessorValueTreeState apvts;
 

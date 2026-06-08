@@ -23,7 +23,5 @@ private:
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> sustainSliderAttatchment;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> releaseSliderAttatchment;
 
-    void styleSlider(juce::Slider& slider);
-
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (adsrUI)
 };
