@@ -12,7 +12,7 @@ VoxGenesisAudioProcessorEditor::VoxGenesisAudioProcessorEditor(VoxGenesisAudioPr
 	addAndMakeVisible(adsr_panel);
 	addAndMakeVisible(osc_panel);
 
-	//ui_inspector.setVisible(true);
+	ui_inspector.setVisible(true);
 }
 
 VoxGenesisAudioProcessorEditor::~VoxGenesisAudioProcessorEditor()
