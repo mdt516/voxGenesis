@@ -22,8 +22,6 @@ adsrUI::~adsrUI()
 
 void adsrUI::paint (juce::Graphics& g)
 {
-    g.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
-
     // border around the ADSR panel
     g.setColour(juce::Colours::grey);
     g.drawRect(getLocalBounds(), 1);
@@ -31,6 +29,9 @@ void adsrUI::paint (juce::Graphics& g)
 
 void adsrUI::resized()
 {
+    const int PANEL_WIDTH = 80;
+    const int PANEL_HEIGHT = 80;
+
     juce::FlexBox fb;
     if (getWidth() > getHeight())         // landscape mode
     {
@@ -40,15 +41,24 @@ void adsrUI::resized()
     {
         fb.flexDirection = juce::FlexBox::Direction::column;
     }
-    fb.alignItems = juce::FlexBox::AlignItems::stretch;
+    fb.justifyContent = juce::FlexBox::JustifyContent::spaceAround;
 
     // add panel flexItems
-    juce::FlexItem attackPanelFlexItem(80, 80, a_panel);
-    juce::FlexItem decayPanelFlexItem(80, 80, d_panel);
-    juce::FlexItem sustainPanelFlexItem(80, 80, s_panel);
-    juce::FlexItem releasePanelFlexItem(80, 80, r_panel);
+    juce::FlexItem attackPanelFlexItem(PANEL_WIDTH, PANEL_HEIGHT, a_panel);
+    juce::FlexItem decayPanelFlexItem(PANEL_WIDTH, PANEL_HEIGHT, d_panel);
+    juce::FlexItem sustainPanelFlexItem(PANEL_WIDTH, PANEL_HEIGHT, s_panel);
+    juce::FlexItem releasePanelFlexItem(PANEL_WIDTH, PANEL_HEIGHT, r_panel);
     fb.items.addArray({attackPanelFlexItem, decayPanelFlexItem, sustainPanelFlexItem, releasePanelFlexItem});
 
+    attackPanelFlexItem.flexGrow = 1;
+    decayPanelFlexItem.flexGrow = 1;
+    sustainPanelFlexItem.flexGrow = 1;
+    releasePanelFlexItem.flexGrow = 1;
+
+    attackPanelFlexItem.flexShrink = 1;
+    decayPanelFlexItem.flexShrink = 1;
+    sustainPanelFlexItem.flexShrink = 1;
+    releasePanelFlexItem.flexShrink = 1;
 
     fb.performLayout(getLocalBounds());
 }

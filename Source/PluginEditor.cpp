@@ -11,8 +11,6 @@ VoxGenesisAudioProcessorEditor::VoxGenesisAudioProcessorEditor(VoxGenesisAudioPr
 
 	addAndMakeVisible(adsr_panel);
 	addAndMakeVisible(osc_panel);
-
-	ui_inspector.setVisible(true);
 }
 
 VoxGenesisAudioProcessorEditor::~VoxGenesisAudioProcessorEditor()
@@ -20,14 +18,15 @@ VoxGenesisAudioProcessorEditor::~VoxGenesisAudioProcessorEditor()
 
 
 void VoxGenesisAudioProcessorEditor::paint(juce::Graphics& g)
-{
-	g.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
-}
+{}
 
 void VoxGenesisAudioProcessorEditor::resized()
 {
 	juce::FlexBox fb;
+
 	fb.flexDirection = juce::FlexBox::Direction::column;
+	fb.alignItems = juce::FlexBox::AlignItems::stretch;
+	fb.justifyContent = juce::FlexBox::JustifyContent::spaceAround;
 
 	juce::FlexItem oscillator_fi(100, 30, osc_panel);
 	juce::FlexItem adsr_fi(200, 300, adsr_panel);

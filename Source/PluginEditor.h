@@ -4,8 +4,8 @@
 #include "PluginProcessor.h"
 #include <JuceHeader.h>
 
-#include "UI/adsrUI.h"
-#include "UI/oscillatorUI.h"
+#include "UI/components/adsrUI.h"
+#include "UI/components/oscillatorUI.h"
 
 
 class VoxGenesisAudioProcessorEditor : public juce::AudioProcessorEditor
@@ -25,7 +25,7 @@ private:
 	oscillatorUI osc_panel;
 	juce::Component main_window;
 
-	melatonin::Inspector ui_inspector{*this};
+	//melatonin::Inspector ui_inspector{*this};
 
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(VoxGenesisAudioProcessorEditor)
 };
