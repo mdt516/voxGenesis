@@ -1,6 +1,7 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include "../customLookAndFeel.h"
 
 
 class adsrUI : public juce::Component
@@ -13,6 +14,17 @@ public:
 	void resized() override;
 
 private:
+	static inline customLookAndFeel laf;
+
+	static const int NUM_TEXT_BOX_WIDTH = 60;
+	static const int NUM_TEXT_BOX_HEIGHT = 30;
+
+	static const int LABEL_BOX_WIDTH = 30;
+	static const int LABEL_BOX_HEIGHT = 50;
+
+	static const int SLIDER_WIDTH = 60;
+	static const int SLIDER_HEIGHT = 180;
+
 	struct attackPanel : public juce::Component
 	{
 		attackPanel()
@@ -20,21 +32,14 @@ private:
 			attackLabel.setText("Attack", juce::NotificationType::dontSendNotification);
 			attackLabel.setJustificationType(juce::Justification::centred);
 
+			attackSlider.setLookAndFeel(&laf);
+
 			addAndMakeVisible(attackSlider);
 			addAndMakeVisible(attackLabel);
 		}
 
 		void resized() override
 		{
-			const int NUM_TEXT_BOX_WIDTH = 50;
-			const int NUM_TEXT_BOX_HEIGHT = 30;
-
-			const int LABEL_BOX_WIDTH = 30;
-			const int LABEL_BOX_HEIGHT = 50;
-
-			const int SLIDER_WIDTH = 60;
-			const int SLIDER_HEIGHT = 100;
-
 			juce::FlexBox fb;
 			if (getParentComponent()->getWidth() > getParentComponent()->getHeight())      // landscape mode
 			{
@@ -47,7 +52,7 @@ private:
 				attackSlider.setTextBoxStyle(juce::Slider::TextBoxLeft, false, NUM_TEXT_BOX_WIDTH, NUM_TEXT_BOX_HEIGHT);
 			}
 			fb.flexDirection = juce::FlexBox::Direction::column;
-			fb.alignContent = juce::FlexBox::AlignContent::stretch;
+			fb.justifyContent = juce::FlexBox::JustifyContent::spaceAround;
 
 			juce::FlexItem sliderItem(SLIDER_WIDTH, SLIDER_HEIGHT, attackSlider);
 			juce::FlexItem labelItem(LABEL_BOX_WIDTH, LABEL_BOX_HEIGHT, attackLabel);
@@ -73,15 +78,6 @@ private:
 
 		void resized() override
 		{
-			const int NUM_TEXT_BOX_WIDTH = 50;
-			const int NUM_TEXT_BOX_HEIGHT = 30;
-
-			const int LABEL_BOX_WIDTH = 30;
-			const int LABEL_BOX_HEIGHT = 50;
-
-			const int SLIDER_WIDTH = 60;
-			const int SLIDER_HEIGHT = 100;
-
 			juce::FlexBox fb;
 			if (getParentComponent()->getWidth() > getParentComponent()->getHeight())
 			{
@@ -94,6 +90,7 @@ private:
 				decaySlider.setTextBoxStyle(juce::Slider::TextBoxLeft, false, NUM_TEXT_BOX_WIDTH, NUM_TEXT_BOX_HEIGHT);
 			}
 			fb.flexDirection = juce::FlexBox::Direction::column;
+			fb.justifyContent = juce::FlexBox::JustifyContent::spaceAround;
 
 			juce::FlexItem sliderItem(SLIDER_WIDTH, SLIDER_HEIGHT, decaySlider);
 			juce::FlexItem labelItem(LABEL_BOX_WIDTH, LABEL_BOX_HEIGHT, decayLabel);
@@ -119,15 +116,6 @@ private:
 
 		void resized() override
 		{
-			const int NUM_TEXT_BOX_WIDTH = 50;
-			const int NUM_TEXT_BOX_HEIGHT = 30;
-
-			const int LABEL_BOX_WIDTH = 30;
-			const int LABEL_BOX_HEIGHT = 50;
-
-			const int SLIDER_WIDTH = 60;
-			const int SLIDER_HEIGHT = 100;
-
 			juce::FlexBox fb;
 			if (getParentComponent()->getWidth() > getParentComponent()->getHeight())
 			{
@@ -140,6 +128,7 @@ private:
 				sustainSlider.setTextBoxStyle(juce::Slider::TextBoxLeft, false, NUM_TEXT_BOX_WIDTH, NUM_TEXT_BOX_HEIGHT);
 			}
 			fb.flexDirection = juce::FlexBox::Direction::column;
+			fb.justifyContent = juce::FlexBox::JustifyContent::spaceAround;
 
 			juce::FlexItem sliderItem(SLIDER_WIDTH, SLIDER_HEIGHT, sustainSlider);
 			juce::FlexItem labelItem(LABEL_BOX_WIDTH, LABEL_BOX_HEIGHT, sustainLabel);
@@ -165,15 +154,6 @@ private:
 
 		void resized() override
 		{
-			const int NUM_TEXT_BOX_WIDTH = 50;
-			const int NUM_TEXT_BOX_HEIGHT = 30;
-
-			const int LABEL_BOX_WIDTH = 30;
-			const int LABEL_BOX_HEIGHT = 50;
-
-			const int SLIDER_WIDTH = 60;
-			const int SLIDER_HEIGHT = 100;
-
 			juce::FlexBox fb;
 			if (getParentComponent()->getWidth() > getParentComponent()->getHeight())
 			{
@@ -186,6 +166,7 @@ private:
 				releaseSlider.setTextBoxStyle(juce::Slider::TextBoxLeft, false, NUM_TEXT_BOX_WIDTH, NUM_TEXT_BOX_HEIGHT);
 			}
 			fb.flexDirection = juce::FlexBox::Direction::column;
+			fb.justifyContent = juce::FlexBox::JustifyContent::spaceAround;
 
 			juce::FlexItem sliderItem(SLIDER_WIDTH, SLIDER_HEIGHT, releaseSlider);
 			juce::FlexItem labelItem(LABEL_BOX_WIDTH, LABEL_BOX_HEIGHT, releaseLabel);

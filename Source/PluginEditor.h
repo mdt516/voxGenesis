@@ -4,8 +4,8 @@
 #include "PluginProcessor.h"
 #include <JuceHeader.h>
 
-#include "UI/adsrUI.h"
-#include "UI/oscillatorUI.h"
+#include "UI/components/adsrUI.h"
+#include "UI/components/oscillatorUI.h"
 
 
 class VoxGenesisAudioProcessorEditor : public juce::AudioProcessorEditor

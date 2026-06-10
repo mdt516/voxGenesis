@@ -20,11 +20,17 @@
               file="Source/DSP/customOscillator.h"/>
       </GROUP>
       <GROUP id="{756BDE84-31EE-3277-DA3F-BDD351699509}" name="UI">
-        <FILE id="jqpyNU" name="adsrUI.cpp" compile="1" resource="0" file="Source/UI/adsrUI.cpp"/>
-        <FILE id="R5Cc5i" name="adsrUI.h" compile="0" resource="0" file="Source/UI/adsrUI.h"/>
-        <FILE id="zYrbTL" name="oscillatorUI.cpp" compile="1" resource="0"
-              file="Source/UI/oscillatorUI.cpp"/>
-        <FILE id="sFrK5j" name="oscillatorUI.h" compile="0" resource="0" file="Source/UI/oscillatorUI.h"/>
+        <GROUP id="{4E734A8E-08C1-3C90-61A7-0907201E833F}" name="components">
+          <FILE id="tZUo9n" name="adsrUI.cpp" compile="1" resource="0" file="Source/UI/components/adsrUI.cpp"/>
+          <FILE id="DKsvBC" name="adsrUI.h" compile="0" resource="0" file="Source/UI/components/adsrUI.h"/>
+          <FILE id="YI0OHl" name="oscillatorUI.cpp" compile="1" resource="0"
+                file="Source/UI/components/oscillatorUI.cpp"/>
+          <FILE id="vSsqvJ" name="oscillatorUI.h" compile="0" resource="0" file="Source/UI/components/oscillatorUI.h"/>
+        </GROUP>
+        <FILE id="cYupNr" name="customLookAndFeel.cpp" compile="1" resource="0"
+              file="Source/UI/customLookAndFeel.cpp"/>
+        <FILE id="Tf22RI" name="customLookAndFeel.h" compile="0" resource="0"
+              file="Source/UI/customLookAndFeel.h"/>
       </GROUP>
       <FILE id="GfUObA" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>

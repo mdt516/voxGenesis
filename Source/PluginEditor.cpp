@@ -27,7 +27,10 @@ void VoxGenesisAudioProcessorEditor::paint(juce::Graphics& g)
 void VoxGenesisAudioProcessorEditor::resized()
 {
 	juce::FlexBox fb;
+
 	fb.flexDirection = juce::FlexBox::Direction::column;
+	fb.alignItems = juce::FlexBox::AlignItems::stretch;
+	fb.justifyContent = juce::FlexBox::JustifyContent::spaceAround;
 
 	juce::FlexItem oscillator_fi(100, 30, osc_panel);
 	juce::FlexItem adsr_fi(200, 300, adsr_panel);
