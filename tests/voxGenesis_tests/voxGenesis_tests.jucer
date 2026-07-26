@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="SZacJE" name="voxGenesis_tests" projectType="consoleapp"
+              useAppConfig="0" addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1"
+              defines="JUCE_MODAL_LOOPS_PERMITTED=1&#10;">
+  <MAINGROUP id="VMN9tG" name="voxGenesis_tests">
+    <GROUP id="{0F367BD2-A247-386B-FED5-4CE82369A84C}" name="Reference_code">
+      <GROUP id="{0DAC1639-1A80-8063-9332-6C0CC3C17328}" name="DSP">
+        <FILE id="z7ccOC" name="customADSR.cpp" compile="1" resource="0" file="Source/DSP/customADSR.cpp"/>
+        <FILE id="bD6VxW" name="customADSR.h" compile="0" resource="0" file="Source/DSP/customADSR.h"/>
+        <FILE id="tUy9Ra" name="customOscillator.cpp" compile="1" resource="0"
+              file="Source/DSP/customOscillator.cpp"/>
+        <FILE id="JWTPhf" name="customOscillator.h" compile="0" resource="0"
+              file="Source/DSP/customOscillator.h"/>
+      </GROUP>
+      <GROUP id="{14457B4D-BADD-D9E8-AC6F-ED60BAF208F0}" name="Synth">
+        <FILE id="ftgGcP" name="synthSound.h" compile="0" resource="0" file="Source/Synth/synthSound.h"/>
+        <FILE id="gwiI88" name="synthVoice.cpp" compile="1" resource="0" file="Source/Synth/synthVoice.cpp"/>
+        <FILE id="T20Xn2" name="synthVoice.h" compile="0" resource="0" file="Source/Synth/synthVoice.h"/>
+      </GROUP>
+      <FILE id="lZHVik" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="SqmuC6" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+    </GROUP>
+    <GROUP id="{E9FDB32D-37DD-CA2C-5526-1F3197FB4BFA}" name="Source">
+      <FILE id="h7uQmx" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors_headless" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="melatonin_audio_sparklines" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="melatonin_test_helpers" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_MODAL_LOOPS_PERMITTED="1"/>
+  <EXPORTFORMATS>
+    <VS2026 targetFolder="Builds/VisualStudio2026">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="voxGenesis_tests"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="voxGenesis_tests"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="C:/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="C:/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="C:/JUCE/modules"/>
+        <MODULEPATH id="melatonin_audio_sparklines" path="C:/JUCE/user-modules"/>
+        <MODULEPATH id="juce_dsp" path="C:/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="C:/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="C:/JUCE/modules"/>
+        <MODULEPATH id="melatonin_test_helpers" path="C:/JUCE/user-modules"/>
+        <MODULEPATH id="juce_audio_processors" path="C:/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="C:/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="C:/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="C:/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors_headless" path="C:/JUCE/modules"/>
+      </MODULEPATHS>
+    </VS2026>
+  </EXPORTFORMATS>
+</JUCERPROJECT>

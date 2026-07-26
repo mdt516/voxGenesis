@@ -8,3 +8,5 @@
 /voxGenesis-test.filtergraph
 /Source/.vs
 /vcpkg_installed
+/tests/voxGenesis_tests/Builds/VisualStudio2026
+/tests/voxGenesis_tests/JuceLibraryCode
