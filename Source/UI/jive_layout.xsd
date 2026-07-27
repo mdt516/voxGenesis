@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+	<!-- Root: Editor (for plugins) -->
+	<xs:element name="Editor">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="Component"/>
+				<xs:element ref="Text"/>
+				<xs:element ref="Button"/>
+				<xs:element ref="ComboBox"/>
+				<xs:element ref="Slider"/>
+				<xs:element ref="Knob"/>
+				<xs:element ref="Spinner"/>
+				<xs:element ref="Image"/>
+				<xs:element ref="Hyperlink"/>
+				<xs:element ref="ProgressBar"/>
+				<xs:element ref="Label"/>
+				<xs:element ref="Visualiser"/>
+			</xs:choice>
+			<xs:attributeGroup ref="common"/>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Common attributes on all elements -->
+	<xs:attributeGroup name="common">
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="width" type="xs:string"/>
+		<xs:attribute name="height" type="xs:string"/>
+		<xs:attribute name="min-width" type="xs:string"/>
+		<xs:attribute name="min-height" type="xs:string"/>
+		<xs:attribute name="display" type="display-type"/>
+		<xs:attribute name="margin" type="xs:string"/>
+		<xs:attribute name="padding" type="xs:string"/>
+		<xs:attribute name="visible" type="xs:boolean"/>
+		<xs:attribute name="enabled" type="xs:boolean"/>
+		<xs:attribute name="opacity" type="xs:float"/>
+		<xs:attribute name="tooltip" type="xs:string"/>
+	</xs:attributeGroup>
+
+	<!-- Flex attributes -->
+	<xs:attributeGroup name="flex-container">
+		<xs:attribute name="flex-direction" type="flex-direction-type"/>
+		<xs:attribute name="flex-wrap" type="flex-wrap-type"/>
+		<xs:attribute name="justify-content" type="justify-type"/>
+		<xs:attribute name="align-items" type="align-type"/>
+		<xs:attribute name="align-content" type="align-type"/>
+		<xs:attribute name="gap" type="xs:string"/>
+	</xs:attributeGroup>
+
+	<xs:attributeGroup name="flex-item">
+		<xs:attribute name="flex-grow" type="xs:float"/>
+		<xs:attribute name="flex-shrink" type="xs:float"/>
+		<xs:attribute name="flex-basis" type="xs:float"/>
+		<xs:attribute name="align-self" type="align-type"/>
+		<xs:attribute name="order" type="xs:int"/>
+	</xs:attributeGroup>
+
+	<!-- Grid attributes -->
+	<xs:attributeGroup name="grid-container">
+		<xs:attribute name="grid-template-columns" type="xs:string"/>
+		<xs:attribute name="grid-template-rows" type="xs:string"/>
+		<xs:attribute name="grid-template-areas" type="xs:string"/>
+		<xs:attribute name="grid-auto-columns" type="xs:string"/>
+		<xs:attribute name="grid-auto-rows" type="xs:string"/>
+		<xs:attribute name="grid-auto-flow" type="xs:string"/>
+	</xs:attributeGroup>
+
+	<xs:attributeGroup name="grid-item">
+		<xs:attribute name="grid-column" type="xs:string"/>
+		<xs:attribute name="grid-row" type="xs:string"/>
+		<xs:attribute name="grid-area" type="xs:string"/>
+		<xs:attribute name="justify-self" type="align-type"/>
+	</xs:attributeGroup>
+
+	<!-- Component = generic container -->
+	<xs:element name="Component">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="Component"/>
+				<xs:element ref="Text"/>
+				<xs:element ref="Button"/>
+				<xs:element ref="ComboBox"/>
+				<xs:element ref="Slider"/>
+				<xs:element ref="Knob"/>
+				<xs:element ref="Spinner"/>
+				<xs:element ref="Image"/>
+				<xs:element ref="Hyperlink"/>
+				<xs:element ref="ProgressBar"/>
+				<xs:element ref="Label"/>
+				<xs:element ref="Visualiser"/>
+			</xs:choice>
+			<xs:attributeGroup ref="common"/>
+			<xs:attributeGroup ref="flex-container"/>
+			<xs:attributeGroup ref="flex-item"/>
+			<xs:attributeGroup ref="grid-container"/>
+			<xs:attributeGroup ref="grid-item"/>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Text -->
+	<xs:element name="Text">
+		<xs:complexType>
+			<xs:attributeGroup ref="common"/>
+			<xs:attributeGroup ref="flex-item"/>
+			<xs:attribute name="text" type="xs:string"/>
+			<xs:attribute name="justification" type="justification-type"/>
+			<xs:attribute name="font-size" type="xs:string"/>
+			<xs:attribute name="line-spacing" type="xs:float"/>
+			<xs:attribute name="word-wrap" type="xs:boolean"/>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Button -->
+	<xs:element name="Button">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="1">
+				<xs:element ref="Text"/>
+			</xs:choice>
+			<xs:attributeGroup ref="common"/>
+			<xs:attributeGroup ref="flex-item"/>
+			<xs:attribute name="toggleable" type="xs:boolean"/>
+			<xs:attribute name="toggled" type="xs:boolean"/>
+			<xs:attribute name="toggle-on-click" type="xs:boolean"/>
+			<xs:attribute name="radio-group" type="xs:int"/>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- ComboBox -->
+	<xs:element name="ComboBox">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="Option"/>
+				<xs:element ref="Header"/>
+			</xs:choice>
+			<xs:attributeGroup ref="common"/>
+			<xs:attributeGroup ref="flex-item"/>
+			<xs:attribute name="selected" type="xs:int"/>
+			<xs:attribute name="editable" type="xs:boolean"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="Option">
+		<xs:complexType>
+			<xs:attribute name="text" type="xs:string" use="required"/>
+			<xs:attribute name="selected" type="xs:boolean"/>
+			<xs:attribute name="enabled" type="xs:boolean"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="Header">
+		<xs:complexType>
+			<xs:attribute name="text" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Slider -->
+	<xs:element name="Slider">
+		<xs:complexType>
+			<xs:attributeGroup ref="common"/>
+			<xs:attributeGroup ref="flex-item"/>
+			<xs:attribute name="orientation" type="orientation-type"/>
+			<xs:attribute name="min" type="xs:float"/>
+			<xs:attribute name="max" type="xs:float"/>
+			<xs:attribute name="mid" type="xs:float"/>
+			<xs:attribute name="interval" type="xs:float"/>
+			<xs:attribute name="value" type="xs:float"/>
+			<xs:attribute name="sensitivity" type="xs:float"/>
+			<xs:attribute name="snap-to-mouse" type="xs:boolean"/>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Knob -->
+	<xs:element name="Knob">
+		<xs:complexType>
+			<xs:attributeGroup ref="common"/>
+			<xs:attributeGroup ref="flex-item"/>
+			<xs:attribute name="min" type="xs:float"/>
+			<xs:attribute name="max" type="xs:float"/>
+			<xs:attribute name="mid" type="xs:float"/>
+			<xs:attribute name="interval" type="xs:float"/>
+			<xs:attribute name="value" type="xs:float"/>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Spinner -->
+	<xs:element name="Spinner">
+		<xs:complexType>
+			<xs:attributeGroup ref="common"/>
+			<xs:attributeGroup ref="flex-item"/>
+			<xs:attribute name="min" type="xs:float"/>
+			<xs:attribute name="max" type="xs:float"/>
+			<xs:attribute name="value" type="xs:float"/>
+			<xs:attribute name="draggable" type="xs:boolean"/>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Image -->
+	<xs:element name="Image">
+		<xs:complexType>
+			<xs:attributeGroup ref="common"/>
+			<xs:attributeGroup ref="flex-item"/>
+			<xs:attribute name="source" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- ProgressBar -->
+	<xs:element name="ProgressBar">
+		<xs:complexType>
+			<xs:attributeGroup ref="common"/>
+			<xs:attributeGroup ref="flex-item"/>
+			<xs:attribute name="value" type="xs:float"/>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Hyperlink -->
+	<xs:element name="Hyperlink">
+		<xs:complexType>
+			<xs:attributeGroup ref="common"/>
+			<xs:attributeGroup ref="flex-item"/>
+			<xs:attribute name="url" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Label -->
+	<xs:element name="Label">
+		<xs:complexType>
+			<xs:attributeGroup ref="common"/>
+			<xs:attributeGroup ref="flex-item"/>
+			<xs:attribute name="text" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Custom: Visualiser -->
+	<xs:element name="Visualiser">
+		<xs:complexType>
+			<xs:attributeGroup ref="common"/>
+			<xs:attributeGroup ref="flex-item"/>
+			<xs:attribute name="num-channels" type="xs:int"/>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Enumerations -->
+	<xs:simpleType name="display-type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="flex"/>
+			<xs:enumeration value="grid"/>
+			<xs:enumeration value="block"/>
+			<xs:enumeration value="none"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="flex-direction-type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="row"/>
+			<xs:enumeration value="column"/>
+			<xs:enumeration value="row-reverse"/>
+			<xs:enumeration value="column-reverse"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="flex-wrap-type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="no-wrap"/>
+			<xs:enumeration value="wrap"/>
+			<xs:enumeration value="wrap-reverse"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="justify-type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="flex-start"/>
+			<xs:enumeration value="flex-end"/>
+			<xs:enumeration value="centre"/>
+			<xs:enumeration value="space-between"/>
+			<xs:enumeration value="space-around"/>
+			<xs:enumeration value="space-evenly"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="align-type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="flex-start"/>
+			<xs:enumeration value="flex-end"/>
+			<xs:enumeration value="centre"/>
+			<xs:enumeration value="stretch"/>
+			<xs:enumeration value="baseline"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="orientation-type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="horizontal"/>
+			<xs:enumeration value="vertical"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="justification-type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="left"/>
+			<xs:enumeration value="right"/>
+			<xs:enumeration value="centred"/>
+			<xs:enumeration value="top-left"/>
+			<xs:enumeration value="top-right"/>
+			<xs:enumeration value="centred-top"/>
+			<xs:enumeration value="bottom-left"/>
+			<xs:enumeration value="bottom-right"/>
+			<xs:enumeration value="centred-bottom"/>
+			<xs:enumeration value="horizontally-centred"/>
+			<xs:enumeration value="vertically-centred"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

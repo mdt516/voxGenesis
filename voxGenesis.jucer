@@ -2,11 +2,16 @@
 
 <JUCERPROJECT id="RS3ekB" name="voxGenesis" projectType="audioplug" addUsingNamespaceToJuceHeader="0"
               jucerFormatVersion="1" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
-              compilerFlagSchemes="">
+              compilerFlagSchemes="" cppLanguageStandard="20">
   <MAINGROUP id="oYLIZx" name="voxGenesis">
     <GROUP id="{6C3B17CB-C16E-B6FF-02BF-CBDB178D8595}" name="Source">
-      <GROUP id="{DA406B71-CC26-0C59-C402-34F2CE0A77C6}" name="test">
-        <FILE id="VMesTz" name="test.cpp" compile="1" resource="0" file="Source/test/test.cpp"/>
+      <GROUP id="{FD2243EF-F297-F27F-1FFD-1A31B354A40A}" name="UI">
+        <FILE id="RBME0a" name="jive_layout.xsd" compile="0" resource="0" file="Source/UI/jive_layout.xsd"/>
+        <FILE id="BnO4L3" name="jive_style_schema.json" compile="0" resource="0"
+              file="Source/UI/jive_style_schema.json"/>
+        <FILE id="XYB1gG" name="layout.xml" compile="0" resource="1" file="Source/UI/layout.xml"/>
+        <FILE id="cTSxDG" name="stylesheets.json" compile="0" resource="1"
+              file="Source/UI/stylesheets.json"/>
       </GROUP>
       <GROUP id="{C734F86A-E7EF-88DB-277C-5FEBA3092C22}" name="Synth">
         <FILE id="is5E7W" name="synthSound.h" compile="0" resource="0" file="Source/Synth/synthSound.h"/>
@@ -22,19 +27,6 @@
         <FILE id="aNP3WB" name="customOscillator.h" compile="0" resource="0"
               file="Source/DSP/customOscillator.h"/>
       </GROUP>
-      <GROUP id="{756BDE84-31EE-3277-DA3F-BDD351699509}" name="UI">
-        <GROUP id="{4E734A8E-08C1-3C90-61A7-0907201E833F}" name="components">
-          <FILE id="tZUo9n" name="adsrUI.cpp" compile="1" resource="0" file="Source/UI/components/adsrUI.cpp"/>
-          <FILE id="DKsvBC" name="adsrUI.h" compile="0" resource="0" file="Source/UI/components/adsrUI.h"/>
-          <FILE id="YI0OHl" name="oscillatorUI.cpp" compile="1" resource="0"
-                file="Source/UI/components/oscillatorUI.cpp"/>
-          <FILE id="vSsqvJ" name="oscillatorUI.h" compile="0" resource="0" file="Source/UI/components/oscillatorUI.h"/>
-        </GROUP>
-        <FILE id="cYupNr" name="customLookAndFeel.cpp" compile="1" resource="0"
-              file="Source/UI/customLookAndFeel.cpp"/>
-        <FILE id="Tf22RI" name="customLookAndFeel.h" compile="0" resource="0"
-              file="Source/UI/customLookAndFeel.h"/>
-      </GROUP>
       <FILE id="GfUObA" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="eVPG3X" name="PluginProcessor.h" compile="0" resource="0"
@@ -45,6 +37,10 @@
     </GROUP>
   </MAINGROUP>
   <MODULES>
+    <MODULE id="jive_components" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="jive_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="jive_layouts" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="jive_style_sheets" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
@@ -86,6 +82,10 @@
         <MODULEPATH id="juce_gui_extra" path="../../../../../JUCE/modules"/>
         <MODULEPATH id="juce_dsp" path="../../../../../JUCE/modules"/>
         <MODULEPATH id="melatonin_inspector" path="C:/JUCE/user-modules"/>
+        <MODULEPATH id="jive_components" path="C:/JUCE/user-modules"/>
+        <MODULEPATH id="jive_core" path="C:/JUCE/user-modules"/>
+        <MODULEPATH id="jive_layouts" path="C:/JUCE/user-modules"/>
+        <MODULEPATH id="jive_style_sheets" path="C:/JUCE/user-modules"/>
       </MODULEPATHS>
     </VS2026>
   </EXPORTFORMATS>

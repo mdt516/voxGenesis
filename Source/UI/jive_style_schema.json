@@ -1,0 +1,109 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "background": {
+      "type": "string",
+      "description": "Background color (hex, rgb, named)"
+    },
+    "foreground": {
+      "type": "string",
+      "description": "Text/foreground color"
+    },
+    "fill": {
+      "type": "string",
+      "description": "Fill color for graphics"
+    },
+    "font-family": { "type": "string" },
+    "font-size": { "type": "number" },
+    "font-style": { "enum": [ "bold", "italic", "underline", "strikethrough" ] },
+    "border": {
+      "type": "string",
+      "description": "e.g. '2px solid #ff0'"
+    },
+    "border-width": { "type": "number" },
+    "border-radius": { "type": "number" },
+    "opacity": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "padding": {
+      "type": "string",
+      "description": "e.g. '10', '5 10', '1 2 3 4'"
+    },
+    "margin": { "type": "string" },
+    "justification": { "enum": [ "left", "right", "centred", "top-left", "top-right", "centred-top", "bottom-left", "bottom-right", "centred-bottom" ] },
+    "line-spacing": { "type": "number" },
+    "word-wrap": { "type": "boolean" },
+    "cursor": { "enum": [ "normal", "hand", "crosshair", "wait", "text", "help" ] },
+    "visible": { "type": "boolean" },
+    "enabled": { "type": "boolean" }
+  },
+  "additionalProperties": {
+    "oneOf": [
+      {
+        "type": "object",
+        "description": "Element type selector (e.g. Slider, Button, Text, ComboBox)",
+        "properties": {
+          "background": { "type": "string" },
+          "foreground": { "type": "string" },
+          "fill": { "type": "string" },
+          "font-family": { "type": "string" },
+          "font-size": { "type": "number" },
+          "font-style": { "enum": [ "bold", "italic", "underline", "strikethrough" ] },
+          "border": { "type": "string" },
+          "border-width": { "type": "number" },
+          "border-radius": { "type": "number" },
+          "opacity": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "padding": { "type": "string" },
+          "margin": { "type": "string" },
+          "hover": {
+            "type": "object",
+            "description": "Styles applied on hover"
+          },
+          "active": {
+            "type": "object",
+            "description": "Styles applied on click"
+          },
+          "disabled": {
+            "type": "object",
+            "description": "Styles when disabled"
+          },
+          "toggled": {
+            "type": "object",
+            "description": "Styles when toggled on"
+          }
+        },
+        "additionalProperties": { "type": "object" }
+      },
+      {
+        "type": "object",
+        "description": "ID selector (e.g. #my-widget)",
+        "properties": {
+          "background": { "type": "string" },
+          "foreground": { "type": "string" },
+          "font-family": { "type": "string" },
+          "font-size": { "type": "number" },
+          "font-style": { "enum": [ "bold", "italic", "underline", "strikethrough" ] },
+          "border": { "type": "string" },
+          "border-radius": { "type": "number" },
+          "opacity": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "padding": { "type": "string" },
+          "margin": { "type": "string" },
+          "hover": { "type": "object" },
+          "active": { "type": "object" }
+        },
+        "additionalProperties": { "type": "object" }
+      }
+    ]
+  }
+}
