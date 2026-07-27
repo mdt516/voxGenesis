@@ -24,9 +24,8 @@ public:
 	customOscillator& getOscillator() { return osc; }
 private:
 	customOscillator osc;
+	customADSR adsr;
 
 	juce::AudioBuffer<float> synthBuffer;
 	juce::dsp::Gain<float> gain;
-
-	customADSR adsr;
 };
