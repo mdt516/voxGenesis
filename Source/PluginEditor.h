@@ -4,9 +4,7 @@
 #include "PluginProcessor.h"
 #include <JuceHeader.h>
 
-#include "UI/components/adsrUI.h"
-#include "UI/components/oscillatorUI.h"
-
+#include <jive_layouts/jive_layouts.h>
 
 class VoxGenesisAudioProcessorEditor : public juce::AudioProcessorEditor
 {
@@ -14,18 +12,17 @@ public:
 	VoxGenesisAudioProcessorEditor(VoxGenesisAudioProcessor&);
 	~VoxGenesisAudioProcessorEditor() override;
 
-
-	void paint(juce::Graphics&) override;
 	void resized() override;
 
 private:
 	VoxGenesisAudioProcessor& audioProcessor;
 
-	adsrUI adsr_panel;
-	oscillatorUI osc_panel;
-	juce::Component main_window;
+	jive::Interpreter interpreter;
+	juce::ValueTree view;
 
-	//melatonin::Inspector ui_inspector{*this};
+	std::unique_ptr<jive::GuiItem> rootItem;
+
+	melatonin::Inspector ui_inspector{*this};
 
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(VoxGenesisAudioProcessorEditor)
 };

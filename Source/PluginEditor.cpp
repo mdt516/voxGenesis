@@ -2,38 +2,102 @@
 #include "PluginEditor.h"
 #include "PluginProcessor.h"
 
+#define XML
 
 VoxGenesisAudioProcessorEditor::VoxGenesisAudioProcessorEditor(VoxGenesisAudioProcessor& p)
-	: AudioProcessorEditor(&p), audioProcessor(p), adsr_panel(p.getState()), osc_panel(p.getState(), "_osc1-wave-type")
+	: AudioProcessorEditor(&p), audioProcessor(p)
 {
-	setSize(400, 400);
-	setResizable(true, false);
+	#ifndef XML
+	auto makeLayout = []()
+	{
+		return juce::ValueTree{
+			"ComboBox",
+			{
+				{ "id", "combo" },
+				{ "width", 80 },
+				{ "height", 80 },
+			},
+		};
+	};
+	#endif
 
-	addAndMakeVisible(adsr_panel);
-	addAndMakeVisible(osc_panel);
+
+	#pragma region loadLayout
+
+	#ifdef XML 
+	auto layoutFile = juce::File("E:/juce/voxGenesis/Source/UI/layout.xml");
+
+	std::unique_ptr<juce::XmlElement> xml;
+	if (layoutFile.existsAsFile())
+	{
+		xml = juce::XmlDocument::parse(layoutFile);
+	}
+	else
+	{
+		xml = juce::XmlDocument::parse(BinaryData::layout_xml);
+	}
+
+	view = juce::ValueTree::fromXml(*xml);
+	#endif
+
+	#ifndef XML
+	view = makeLayout();
+	#endif
+
+	rootItem = interpreter.interpret(view, &audioProcessor);
+
+	auto mainComponent = rootItem.get()->getComponent().get();
+	setSize(mainComponent->getWidth(), mainComponent->getHeight());
+	//interpreter.listenTo(*rootItem);
+	#pragma endregion
+
+
+	// lambda to find a given parameter and bind it to the needed attatchment
+	auto bindParameter = [&](const char* widgetID, const char* paramID)
+	{
+		auto* item = jive::findItemWithID(*rootItem, juce::Identifier(widgetID));
+
+		if (item == nullptr) { return; }
+
+		auto* param = audioProcessor.getState().getParameter(paramID);
+
+		if (auto* slider = dynamic_cast<jive::Slider*>(item))
+		{
+			slider->attachToParameter(param, nullptr);
+		}
+		else if (auto* comboBox = dynamic_cast<jive::ComboBox*>(item))
+		{
+			comboBox->attachToParameter(param, nullptr);
+		}
+	};
+
+	// lambda to get a component for access
+	auto getComponent = [&](const char* componentID)
+	{
+		//todo finish this
+	};
+
+	bindParameter("_attack", "_attack");
+	bindParameter("_decay", "_decay");
+	bindParameter("_sustain", "_sustain");
+	bindParameter("_release", "_release");
+	bindParameter("wave-selector", "_osc1-wave-type");
+
+
+	addAndMakeVisible(mainComponent);
+	setResizable(true, false);
 }
 
 VoxGenesisAudioProcessorEditor::~VoxGenesisAudioProcessorEditor()
 {}
 
 
-void VoxGenesisAudioProcessorEditor::paint(juce::Graphics& g)
-{}
 
 void VoxGenesisAudioProcessorEditor::resized()
 {
-	juce::FlexBox fb;
-
-	fb.flexDirection = juce::FlexBox::Direction::column;
-	fb.alignItems = juce::FlexBox::AlignItems::stretch;
-	fb.justifyContent = juce::FlexBox::JustifyContent::spaceAround;
-
-	juce::FlexItem oscillator_fi(100, 30, osc_panel);
-	juce::FlexItem adsr_fi(200, 300, adsr_panel);
-
-	oscillator_fi.margin = 5;
-	adsr_fi.margin = 5;
-
-	fb.items.addArray({oscillator_fi, adsr_fi});
-	fb.performLayout(getLocalBounds().reduced(10));
+	if (rootItem != nullptr)
+	{
+		auto mainComponent = rootItem.get()->getComponent().get();
+		mainComponent->setBounds(getLocalBounds());
+	}
 }
