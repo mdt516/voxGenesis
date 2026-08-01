@@ -7,11 +7,7 @@
     <GROUP id="{6C3B17CB-C16E-B6FF-02BF-CBDB178D8595}" name="Source">
       <GROUP id="{FD2243EF-F297-F27F-1FFD-1A31B354A40A}" name="UI">
         <FILE id="RBME0a" name="jive_layout.xsd" compile="0" resource="0" file="Source/UI/jive_layout.xsd"/>
-        <FILE id="BnO4L3" name="jive_style_schema.json" compile="0" resource="0"
-              file="Source/UI/jive_style_schema.json"/>
         <FILE id="XYB1gG" name="layout.xml" compile="0" resource="1" file="Source/UI/layout.xml"/>
-        <FILE id="cTSxDG" name="stylesheets.json" compile="0" resource="1"
-              file="Source/UI/stylesheets.json"/>
       </GROUP>
       <GROUP id="{C734F86A-E7EF-88DB-277C-5FEBA3092C22}" name="Synth">
         <FILE id="is5E7W" name="synthSound.h" compile="0" resource="0" file="Source/Synth/synthSound.h"/>
@@ -35,12 +31,12 @@
             file="Source/PluginEditor.cpp"/>
       <FILE id="P3aLHN" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
+    <FILE id="rUGBVO" name="juce.natvis" compile="0" resource="1" file="Builds/VisualStudio2026/juce.natvis"/>
   </MAINGROUP>
   <MODULES>
     <MODULE id="jive_components" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="jive_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="jive_layouts" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
-    <MODULE id="jive_style_sheets" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
@@ -82,10 +78,9 @@
         <MODULEPATH id="juce_gui_extra" path="../../../../../JUCE/modules"/>
         <MODULEPATH id="juce_dsp" path="../../../../../JUCE/modules"/>
         <MODULEPATH id="melatonin_inspector" path="C:/JUCE/user-modules"/>
+        <MODULEPATH id="jive_layouts" path="C:/JUCE/user-modules"/>
         <MODULEPATH id="jive_components" path="C:/JUCE/user-modules"/>
         <MODULEPATH id="jive_core" path="C:/JUCE/user-modules"/>
-        <MODULEPATH id="jive_layouts" path="C:/JUCE/user-modules"/>
-        <MODULEPATH id="jive_style_sheets" path="C:/JUCE/user-modules"/>
       </MODULEPATHS>
     </VS2026>
   </EXPORTFORMATS>
